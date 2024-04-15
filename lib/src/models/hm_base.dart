@@ -1,7 +1,7 @@
 class HMBase {
   const HMBase({
     required this.uuid,
-    required this.name,
+    this.name = '',
   });
 
   final String uuid;

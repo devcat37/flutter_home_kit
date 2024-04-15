@@ -1,7 +1,7 @@
-import 'package:flutter_home_kit/src/hm_accessory.dart';
-import 'package:flutter_home_kit/src/hm_base.dart';
-import 'package:flutter_home_kit/src/hm_room.dart';
-import 'package:flutter_home_kit/src/hm_zone.dart';
+import 'package:flutter_home_kit/src/models/hm_accessory.dart';
+import 'package:flutter_home_kit/src/models/hm_base.dart';
+import 'package:flutter_home_kit/src/models/hm_room.dart';
+import 'package:flutter_home_kit/src/models/hm_zone.dart';
 
 class HMHome extends HMBase {
   const HMHome({
@@ -10,6 +10,7 @@ class HMHome extends HMBase {
     this.rooms = const [],
     this.zones = const [],
     this.accessories = const [],
+    this.isPrimary = false,
   });
 
   /// A list of the rooms created and managed by the user.
@@ -21,6 +22,8 @@ class HMHome extends HMBase {
   /// The collection of accessories that are part of the home.
   final List<HMAccessory> accessories;
 
+  final bool isPrimary;
+
   factory HMHome.fromJson(dynamic json) {
     if (json is Map) {
       return HMHome(
@@ -31,6 +34,7 @@ class HMHome extends HMBase {
         accessories: json['accessories'] == null
             ? []
             : (json['accessories'] as List<dynamic>).map((e) => HMAccessory.fromJson(e)).toList(),
+        isPrimary: json['isPrimary'] ?? false,
       );
     }
 

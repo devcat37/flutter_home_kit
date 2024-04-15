@@ -1,14 +1,14 @@
-import 'package:flutter_home_kit/src/hm_base.dart';
+import 'package:flutter_home_kit/src/models/hm_base.dart';
 
-class HMAccessory extends HMBase {
-  const HMAccessory({
+class HMZone extends HMBase {
+  const HMZone({
     required super.uuid,
     required super.name,
   });
 
-  factory HMAccessory.fromJson(dynamic json) {
+  factory HMZone.fromJson(dynamic json) {
     if (json is Map) {
-      return HMAccessory(
+      return HMZone(
         name: json['name'] as String,
         uuid: json['uuid'] as String,
       );
